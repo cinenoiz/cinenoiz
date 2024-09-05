@@ -1,0 +1,22 @@
+
+#navbar {
+    position: fixed;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    /*border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-color: white;*/
+    height: 10vh;
+    z-index: 2;
+}
+
+#navbar .container-menu {
+    width: 90%;
+}
+
+#navbar .logo {
+    height: 8vh;
+}

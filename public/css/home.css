@@ -1,0 +1,217 @@
+
+body {
+    background-color: black;
+}
+
+.titleh2 {
+    color: white;
+    padding-left: 50px;
+}
+
+#conteudo {
+    padding-top: 10vh;
+}
+
+#banner {
+    min-height: 60vh;
+}
+
+#banner .swiper-slide {
+    min-height: 60vh;
+}
+
+#banner .image-slide {
+    min-height: 60vh;
+    background-size: cover;
+    filter: blur(2px);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+#banner .conteudo-slide {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    height: 60vh;
+}
+
+#banner .informacoes-filme {
+    flex: 1;
+    background-color: rgba(0, 0, 0, 0.733);
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+#banner .personagem-filme {
+    flex: 2;
+    transition: 0.3s;
+    animation: pulse 10s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.03);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+#banner .bannerProdutoraText {
+    text-transform: uppercase;
+    color: white;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    font-size: larger;
+    font-weight: 300;
+}
+
+#banner .bannerFilmeText {
+    color: white;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    font-size: xx-large;
+    font-weight: 800;
+}
+
+#banner .buttonIngresso {
+    color: white;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    font-size: medium;
+    font-weight: 700;
+    border: none;
+    border-radius: 10px;
+    background-color: #f5bf02;
+    padding: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+#cartaz {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    font-size: medium;
+    font-weight: 700;
+}
+
+.card-filme {
+    width: auto !important;
+    height: auto !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-filme img {
+    width: 300px;
+    display: block;
+}
+
+.banner-section {
+    width: 100%;
+    overflow: hidden;
+    padding: 20px 0;
+}
+
+.banner-section .card-filme:first-child {
+    margin-left: 50px;
+}
+
+.swiper-container {
+    width: 100%;
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.card-filme:hover .overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.overlay h3 {
+    margin: 0;
+    padding-bottom: 10px;
+}
+
+.btn-watch {
+    background-color: #f5bf02;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    font-size: medium;
+    font-weight: 600;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-watch:hover {
+    background-color: #b99511;
+}
+
+#banner-3d {
+    margin-top: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.div-imagens-banner {
+    width: 90%;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.banner-3d-tudo {
+    width: 100%;
+}
+
+.banner-3d-pessoas {
+    width: 100%;
+    position: absolute;
+    transition: transform 0.5s ease-in-out;
+}
+
+#banner-3d:hover .banner-3d-pessoas {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.title3d {
+    text-transform: uppercase;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    font-size: xx-large;
+    font-weight: 800;
+    color: white;
+    letter-spacing: 1px;
+    position: absolute;
+    z-index: 0;
+    top: 20px;
+    left: 50px;
+}

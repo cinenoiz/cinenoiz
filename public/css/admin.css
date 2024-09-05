@@ -1,0 +1,236 @@
+
+
+#banner {
+    min-height: 60vh;
+    overflow: hidden;
+    border-width: 2px;
+    border-style: solid;
+    position: relative;
+    z-index: 0;
+}
+
+#banner .image-slide {
+    height: 60vh;
+    background-size: cover;
+    z-index: 1;
+    width: 100%;
+    position: absolute;
+
+    filter: blur(2px);
+}
+
+#banner .conteudo-slide {
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+    height: 60vh;
+}
+
+#banner .informacoes-filme {
+    flex: 1;
+    background-color: rgba(0, 0, 0, 0.733);
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.personagemImage {
+    height: 60vh !important;
+}
+
+#banner .personagem-filme {
+    flex: 2;
+    transition: 0.3s;
+    animation: pulse 10s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.03);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+#banner .bannerProdutoraText {
+    text-transform: uppercase;
+    color: white;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    font-size: larger;
+    font-weight: 300;
+}
+
+#banner .bannerFilmeText {
+    color: white;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    font-size: xx-large;
+    font-weight: 800;
+}
+
+#banner .buttonIngresso {
+    color: white;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    font-size: medium;
+    font-weight: 700;
+    border: none;
+    border-radius: 10px;
+    background-color: #f5bf02;
+    padding: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.form-combo-produtora {
+    text-transform: uppercase;
+    color: white;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    font-size: larger;
+    font-weight: 300;
+
+    background-color: transparent;
+
+}
+
+.form-combo-produtora option {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.form-combo-produtora option:checked {
+    background-color: #d1e7dd;
+    color: #000000;
+}
+
+.form-text-filme {
+    width: 100%;
+
+    padding: 0;
+    margin-bottom: 10px;
+
+    color: white;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    font-size: xx-large;
+    font-weight: 800;
+
+    background-color: transparent;
+}
+
+#generos {
+    max-width: 100% !important;
+}
+
+#modal-filme-info {
+    width: 100%;
+    background-color: black;
+    min-height: 30vh;
+    border-width: 3px;
+    border-style: solid;
+    border-color: white;
+    border-radius: 15px;
+    padding: 50px;
+}
+
+.titleFilmeEdit {
+    color: white;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    font-size: xx-large;
+    font-weight: 500;
+
+}
+
+.sinopseFilmeEdit {
+    text-align: justify;
+    color: white;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    font-size: larger;
+}
+
+.form-sinopse-filme {
+    width: 100%;
+    background-color: transparent;
+    text-align: justify;
+    color: white;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    font-size: larger;
+    min-height: 50vh;
+}
+
+.col-filmes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.foto-filme {
+    position: relative;
+    width: 100%;
+    cursor: pointer;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.foto-filme-divulgacao {
+    width: 70%;
+    border-radius: 15px;
+}
+
+.icon-div {
+    top: 0;
+    width: 70%;
+    height: 100%;
+    background-color: #00000065;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.foto-filme img.cam-icon {
+    width: 50px;
+    transition: 0.3s;
+    opacity: 0;
+}
+
+.foto-filme:hover .icon-div  {
+    opacity: 1;
+}
+
+.foto-filme:hover .cam-icon {
+    opacity: 1;
+}
+
+
+.modal-body img {
+    max-width: 100%;
+}
+
+#cartazImage {
+    height: 30vh;
+}
+
+.text-table {
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    font-weight: 300;
+    margin: 0;
+}
+
+#map {
+    width: 50%;
+    height: 50vh;
+}
