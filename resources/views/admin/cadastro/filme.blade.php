@@ -185,10 +185,10 @@
                 formData.append('imgFilme2', imagem2Blob, 'filme2.png');
 
                 console.log('Banner Blob:', bannerBlob);
-console.log('Personagem Blob:', personagemBlob);
-console.log('Cartaz Blob:', cartazBlob);
-console.log('Imagem1 Blob:', imagem1Blob);
-console.log('Imagem2 Blob:', imagem2Blob);
+                console.log('Personagem Blob:', personagemBlob);
+                console.log('Cartaz Blob:', cartazBlob);
+                console.log('Imagem1 Blob:', imagem1Blob);
+                console.log('Imagem2 Blob:', imagem2Blob);
 
 
 

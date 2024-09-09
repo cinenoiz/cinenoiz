@@ -84,6 +84,10 @@ class FilmeController extends Controller
                 'sucesso' => 'Filme registrado com êxito!',
             ]);
 
+        } else {
+            return response()->json([
+                'erro' => 'Alguns arquivos não foram enviados.'
+            ]);
         }
 
         return response()->json([
@@ -111,7 +115,7 @@ class FilmeController extends Controller
                 filme.cartaz_path,
                 filme.filme1_path,
                 filme.filme2_path,
-                GROUP_CONCAT(genero.nome SEPARATOR ", ") AS generos
+                GROUP_CONCAT(genero.nome SEPARATOR "/") AS generos
             FROM filme
             JOIN filme_genero ON filme_genero.id_filme = filme.id
             JOIN genero ON filme_genero.id_genero = genero.id
@@ -144,7 +148,7 @@ class FilmeController extends Controller
                 filme.cartaz_path,
                 filme.filme1_path,
                 filme.filme2_path,
-                GROUP_CONCAT(genero.nome SEPARATOR ', ') AS generos
+                GROUP_CONCAT(genero.nome SEPARATOR '/') AS generos
             FROM filme
             JOIN filme_genero ON filme_genero.id_filme = filme.id
             JOIN genero ON filme_genero.id_genero = genero.id
@@ -160,11 +164,47 @@ class FilmeController extends Controller
                 filme.cartaz_path,
                 filme.filme1_path,
                 filme.filme2_path
+            ORDER BY RAND()
         ");
+
+        $para_familia = DB::select("
+            SELECT
+                filme.id,
+                filme.titulo,
+                filme.sinopse,
+                produtora.nome AS produtora_nome,
+                filme.banner_path,
+                filme.personagem_path,
+                filme.cartaz_path,
+                filme.filme1_path,
+                filme.filme2_path,
+                GROUP_CONCAT(genero.nome SEPARATOR '/') AS generos
+            FROM filme
+            JOIN filme_genero ON filme_genero.id_filme = filme.id
+            JOIN genero ON filme_genero.id_genero = genero.id
+            JOIN produtora ON filme.id_produtora = produtora.id
+            WHERE id_genero IN (2, 3, 6, 7)
+            GROUP BY
+                filme.id,
+                filme.titulo,
+                filme.sinopse,
+                produtora.nome,
+                filme.banner_path,
+                filme.personagem_path,
+                filme.cartaz_path,
+                filme.filme1_path,
+                filme.filme2_path
+            ORDER BY RAND()
+        ");
+
+
+        $cinemas = DB::select("SELECT nome, latitude 'lat', longitude 'lng', logradouro, numero, cep, bairro, cidade, uf FROM `cinema`");
 
         return view('home', [
             'filmes_destaque' => $filmes_destaque,
-            'outros_filmes' => $outros_filmes
+            'outros_filmes' => $outros_filmes,
+            'para_familia' => $para_familia,
+            'cinemas' => $cinemas
         ]);
     }
 

@@ -1,10 +1,17 @@
 @extends('layouts.layout')
 @section('titulo', 'Cinenóiz | Home')
 
+
 @section('css')
+<link rel="stylesheet" href="{{ asset('css/leaflet.css') }}" />
 <link rel="stylesheet" href="{{ asset('css/home.css') }}">
 <link rel="stylesheet" href="{{ asset('css/swiper-bundle.min.css') }}">
 @endsection
+
+@php
+    $modals = '';
+@endphp
+
 
 
 @section('conteudo')
@@ -13,6 +20,7 @@
     <section id="banner" class="banner swiper">
 
         <div class="swiper-wrapper">
+
 
             @foreach ($filmes_destaque as $filme)
 
@@ -25,7 +33,7 @@
                         <span class="bannerProdutoraText">{{ $filme->produtora_nome }}</span>
                         <h2 class="bannerFilmeText">{{ $filme->titulo }}</h2>
 
-                        <button class="buttonIngresso">Garantir Ingresso</button>
+                        <button class="buttonIngresso" data-bs-toggle="modal" data-bs-target="#modal-{{ $filme->id }}">Garantir Ingresso</button>
 
                     </div>
 
@@ -36,6 +44,17 @@
 
                 </div>
             </div>
+
+            @php
+                $modals .= view('modals.exibir-filme', [
+                    'modalId' => 'modal-' . $filme->id,
+                    'titulo' => $filme->titulo,
+                    'foto1' => asset('/storage/'.$filme->filme1_path),
+                    'foto2' => asset('/storage/'.$filme->filme2_path),
+                    'sinopse' => $filme->sinopse,
+                    'cinemas' => $cinemas
+                ])->render();
+            @endphp
 
             @endforeach
 
@@ -49,30 +68,36 @@
     <div id="cartaz">
         <h2 class="titleh2">Filmes em Cartaz:</h2>
 
+
         <div class="banner-section">
             <div class="swiper-container">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide card-filme">
-                        <img src="{{ asset('image/coraline.jpg') }}" alt="Filme 1">
-                        <div class="overlay">
-                            <h3>Coraline</h3>
-                            <button class="btn-watch">Reservar Assento</button>
+
+                    @foreach ($outros_filmes as $filme)
+                        <div class="swiper-slide card-filme">
+                            <img src="{{ asset('/storage/'.$filme->cartaz_path) }}" alt="Cartaz do Filme">
+                            <div class="overlay">
+                                <h3>{{ $filme->titulo }}</h3>
+                                <button class="btn-watch" data-bs-toggle="modal" data-bs-target="#modal-{{ $filme->id }}">Reservar Assento</button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="swiper-slide card-filme">
-                        <img src="{{ asset('image/fantasmas.jpg') }}" alt="Filme 2">
-                        <div class="overlay">
-                            <h3>Os Fantasmas Ainda Se Divertem</h3>
-                            <button class="btn-watch">Reservar Assento</button>
-                        </div>
-                    </div>
-                    <div class="swiper-slide card-filme"><img src="{{ asset('image/maxxine.jpg') }}" alt="Filme 3"></div>
-                    <div class="swiper-slide card-filme"><img src="{{ asset('image/sorri.jpg') }}" alt="Filme 4"></div>
-                    <div class="swiper-slide card-filme"><img src="{{ asset('image/twisters.jpg') }}" alt="Filme 5"></div>
-                    <div class="swiper-slide card-filme"><img src="{{ asset('image/wicked.jpg') }}" alt="Filme 6"></div>
+
+                        @php
+                            $modals .= view('modals.exibir-filme', [
+                                'modalId' => 'modal-' . $filme->id,
+                                'titulo' => $filme->titulo,
+                                'foto1' => asset('/storage/'.$filme->filme1_path),
+                                'foto2' => asset('/storage/'.$filme->filme2_path),
+                                'sinopse' => $filme->sinopse,
+                                'cinemas' => $cinemas
+                            ])->render();
+                        @endphp
+                    @endforeach
                 </div>
             </div>
         </div>
+
+
 
     </div>
 
@@ -94,10 +119,50 @@
 
     </div>
 
+    <div id="cartaz">
+        <h2 class="titleh2">Para a Família:</h2>
+
+
+        <div class="banner-section">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+
+                    @foreach ($para_familia as $filme)
+                        <div class="swiper-slide card-filme">
+                            <img src="{{ asset('/storage/'.$filme->cartaz_path) }}" alt="Cartaz do Filme">
+                            <div class="overlay">
+                                <h3>{{ $filme->titulo }}</h3>
+                                <button class="btn-watch"  data-bs-toggle="modal" data-bs-target="#modal-{{ $filme->id }}">Encontrar Assentos</button>
+                            </div>
+                        </div>
+
+                        @php
+                            $modals .= view('modals.exibir-filme', [
+                                'modalId' => 'modal-' . $filme->id,
+                                'titulo' => $filme->titulo,
+                                'foto1' => asset('/storage/'.$filme->filme1_path),
+                                'foto2' => asset('/storage/'.$filme->filme2_path),
+                                'sinopse' => $filme->sinopse,
+                                'cinemas' => $cinemas
+                            ])->render();
+                        @endphp
+                    @endforeach
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <div class="mt-5 mb-5"></div>
+
 </section>
 
 
 </section>
+
+{!! $modals !!}
 @endsection
 
 

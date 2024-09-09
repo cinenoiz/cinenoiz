@@ -215,3 +215,79 @@ body {
     top: 20px;
     left: 50px;
 }
+
+.row-filme {
+    display: flex;
+}
+
+.row-filme .col {
+    flex: 1
+}
+
+.titleFilmeEdit {
+    color: white;
+
+}
+
+.title {
+    margin-top: 20px;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    font-size: xx-large;
+    font-weight: 500;
+    color: white
+}
+
+.sinopse {
+    text-align: justify;
+    color: white;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    font-size: larger;
+
+}
+
+.foto-filme {
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+
+.modal-filme .modal-content {
+    max-height: 70vh;
+    min-height: 70vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-color: black;
+    border-color: white;
+    border-width: 2px;
+    border-style: solid;
+}
+
+.mapa {
+    width: 100%;
+    height: 50vh;
+}
+
+.modal-filme .modal-content::-webkit-scrollbar {
+    border-radius: 20px;
+    width: 0.5rem;
+    background-color: var(--text-color);
+}
+
+.modal-filme .modal-content::-webkit-scrollbar-thumb {
+    background-color: var(--main-color);
+    border-radius: 5rem;
+}
+
+.icon-close-div {
+    background-color: black;
+    border: none;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.icon-close {
+    width: 20px;
+}

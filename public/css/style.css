@@ -4,3 +4,20 @@
     margin: 0;
     padding: 0;
 }
+
+:root {
+    --main-color: #F5BF02;
+    --text-color: #020307;
+    --bg-color: #fff;
+}
+
+
+html::-webkit-scrollbar {
+    width: 0.5rem;
+    background-color: var(--text-color);
+}
+
+html::-webkit-scrollbar-thumb {
+    background-color: var(--main-color);
+    border-radius: 5rem;
+}
