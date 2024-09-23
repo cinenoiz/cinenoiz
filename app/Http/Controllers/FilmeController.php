@@ -199,7 +199,7 @@ class FilmeController extends Controller
             ORDER BY RAND()
         ");
 
-        $cinemas = DB::select("SELECT nome, latitude 'lat', longitude 'lng', logradouro, numero, cep, bairro, cidade, uf FROM `cinema`");
+        $cinemas = DB::select("SELECT nome, latitude 'lat', longitude 'lng', logradouro, numero, cep, bairro, cidade, uf FROM `cinema` WHERE deleted = 0");
 
         return view('home', [
             'filmes_destaque' => $filmes_destaque,
@@ -217,7 +217,7 @@ class FilmeController extends Controller
         ->get();;
         $produtoras = Produtora::where('deleted', false)
         ->orderBy('created_at', 'desc')
-        ->get();;
+        ->get();
 
         return view('admin/cadastro/filme', ['generos' => $generos, 'produtoras' => $produtoras]);
     }
