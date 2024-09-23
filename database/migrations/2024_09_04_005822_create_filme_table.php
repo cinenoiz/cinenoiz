@@ -18,6 +18,8 @@ return new class extends Migration
             $table->timestamps();
             $table->string('titulo', 200);
             $table->string('sinopse', 2000);
+            $table->boolean('deleted')->default(false);
+
 
             // Produtora FK
             $table->unsignedBigInteger('id_produtora')->nullable();

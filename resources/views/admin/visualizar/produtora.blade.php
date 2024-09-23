@@ -14,12 +14,22 @@
     <thead>
         <tr>
             <th>Nome Produtora</th>
+            <th>Ações</th>
         </tr>
     </thead>
     <tbody>
         @foreach ($produtoras as $produtora)
             <tr>
                 <th><p class="text-table">{{ $produtora->nome }}</p></th>
+                <th>
+                    <form action="/delete/produtora/{{ $produtora->id }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="btn">
+                            <img src="{{ asset('icons/trash.png') }}" class="trash-icon">
+                        </button>
+                    </form>
+                </th>
             </tr>
         @endforeach
     </tbody>

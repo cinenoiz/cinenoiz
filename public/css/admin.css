@@ -234,3 +234,11 @@
     width: 50%;
     height: 50vh;
 }
+
+.trash-icon {
+    width: 25px;
+}
+
+.trash-icon:hover {
+    cursor: pointer;
+}

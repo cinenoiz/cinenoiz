@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('uf', 200);
             $table->string('latitude', 200);
             $table->string('longitude', 200);
+            $table->boolean('deleted')->default(false);
         });
     }
 

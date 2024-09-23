@@ -23,6 +23,7 @@
             <th>UF</th>
             <th>Latitude</th>
             <th>Longitude</th>
+            <th>Ações</th>
         </tr>
     </thead>
     <tbody>
@@ -37,6 +38,16 @@
                 <th><p class="text-table">{{ $cinema->uf }}</p></th>
                 <th><p class="text-table">{{ $cinema->latitude }}</p></th>
                 <th><p class="text-table">{{ $cinema->longitude }}</p></th>
+
+                <th>
+                    <form action="/delete/cinema/{{ $cinema->id }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="btn">
+                            <img src="{{ asset('icons/trash.png') }}" class="trash-icon">
+                        </button>
+                    </form>
+                </th>
             </tr>
         @endforeach
     </tbody>

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('nome', 200);
+            $table->boolean('deleted')->default(false);
         });
     }
 

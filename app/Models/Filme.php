@@ -19,6 +19,7 @@ class Filme extends Model
         'cartaz_path',
         'filme1_path',
         'filme2_path',
-        'id_produtora'
+        'id_produtora',
+        'deleted'
     ];
 }

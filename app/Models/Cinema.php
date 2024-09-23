@@ -20,6 +20,7 @@ class Cinema extends Model
         'cidade',
         'uf',
         'latitude',
-        'longitude'
+        'longitude',
+        'deleted'
     ];
 }

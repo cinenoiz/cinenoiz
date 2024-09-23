@@ -15,6 +15,7 @@
         <tr>
             <th>Titulo Filme</th>
             <th>Sinopse</th>
+            <th>Ações</th>
         </tr>
     </thead>
     <tbody>
@@ -22,6 +23,15 @@
             <tr>
                 <th><p class="text-table">{{ $filme->titulo }}</p></th>
                 <th><p class="text-table"><textarea name="" id="">{{ $filme->sinopse }}</textarea></p></th>
+                <th>
+                    <form action="/delete/filme/{{ $filme->id }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="btn">
+                            <img src="{{ asset('icons/trash.png') }}" class="trash-icon">
+                        </button>
+                    </form>
+                </th>
             </tr>
         @endforeach
     </tbody>

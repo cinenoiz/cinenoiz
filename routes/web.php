@@ -87,3 +87,12 @@ Route::post('/cadastro/produtora', [ProdutoraController::class, 'store']);
 Route::post('/cadastro/genero', [GeneroController::class, 'store']);
 Route::post('/cadastro/cinema', [CinemaController::class, 'store']);
 
+/*
+|--------------------------------------------------------------------------
+| DELETE Routes
+|--------------------------------------------------------------------------
+*/
+Route::delete('/delete/cinema/{id}', [CinemaController::class, 'destroy']);
+Route::delete('/delete/filme/{id}', [FilmeController::class, 'destroy']);
+Route::delete('/delete/genero/{id}', [GeneroController::class, 'destroy']);
+Route::delete('/delete/produtora/{id}', [ProdutoraController::class, 'destroy']);

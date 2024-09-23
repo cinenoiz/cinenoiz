@@ -12,6 +12,7 @@ class Produtora extends Model
     protected $table = 'produtora';
 
     protected $fillable = [
-        'nome'
+        'nome',
+        'deleted'
     ];
 }

@@ -9,12 +9,16 @@ class CinemaController extends Controller
 {
 
     public function index() {
-        $cinemas = Cinema::all();
+        $cinemas = Cinema::where('deleted', false)
+                         ->orderBy('created_at', 'desc')
+                         ->get();
         return view('admin/visualizar/cinema', ['cinemas' => $cinemas]);
     }
 
     public function indexAPI() {
-        $cinemas = Cinema::all();
+        $cinemas = Cinema::where('deleted', false)
+                         ->orderBy('created_at', 'desc')
+                         ->get();
         return $cinemas;
     }
 
@@ -33,8 +37,21 @@ class CinemaController extends Controller
             'longitude' => $request['longitude'],
         ]);
 
-        return redirect('/admin/cadastro')->with('success', 'Cinema `' . $request['nome'] . '` adicionado com êxito!');;
+        return redirect('/admin/cadastro')->with('success', 'Cinema `' . $request['nome'] . '` adicionado com êxito!');
     }
 
+
+    public function destroy($id)
+    {
+        $cinema = Cinema::find($id);
+
+        if ($cinema) {
+            $cinema->deleted = true;
+            $cinema->save();
+            return redirect('/admin/visualizar')->with('success', 'Cinema excluído com êxito!');
+        }
+
+        return redirect('/admin/visualizar')->with('error', 'Cinema não encontrado.');
+    }
 
 }

@@ -46,3 +46,6 @@ Route::get('/cinema', [CinemaController::class, 'indexAPI']);
 |--------------------------------------------------------------------------
 */
 Route::get('/endereco', [EnderecoController::class, 'getAddress']);
+
+
+

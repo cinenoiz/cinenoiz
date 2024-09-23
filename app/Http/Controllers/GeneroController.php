@@ -9,7 +9,9 @@ class GeneroController extends Controller
 {
 
     public function index() {
-        $generos = Genero::all();
+        $generos = Genero::where('deleted', false)
+        ->orderBy('created_at', 'desc')
+        ->get();
         return view('admin/visualizar/genero', ['generos' => $generos]);
     }
 
@@ -22,6 +24,20 @@ class GeneroController extends Controller
         ]);
 
         return redirect('/admin/cadastro')->with('success', 'Gênero `' . $nome . '` adicionado com êxito!');;
+    }
+
+
+    public function destroy($id)
+    {
+        $genero = Genero::find($id);
+
+        if ($genero) {
+            $genero->deleted = true;
+            $genero->save();
+            return redirect('/admin/visualizar')->with('success', 'Gênero excluído com êxito!');
+        }
+
+        return redirect('/admin/visualizar')->with('error', 'Gênero não encontrado.');
     }
 
 

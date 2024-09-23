@@ -14,7 +14,9 @@ class FilmeController extends Controller
 {
 
     public function index() {
-        $filmes = Filme::all();
+        $filmes = Filme::where('deleted', false)
+        ->orderBy('created_at', 'desc')
+        ->get();
         return view('admin/visualizar/filme', ['filmes' => $filmes]);
     }
 
@@ -102,7 +104,6 @@ class FilmeController extends Controller
     | Render Router
     |--------------------------------------------------------------------------
     */
-
     public function renderHome() {
         $filmes_destaque = DB::select('
             SELECT
@@ -120,6 +121,7 @@ class FilmeController extends Controller
             JOIN filme_genero ON filme_genero.id_filme = filme.id
             JOIN genero ON filme_genero.id_genero = genero.id
             JOIN produtora ON filme.id_produtora = produtora.id
+            WHERE filme.deleted = false
             GROUP BY
                 filme.id,
                 filme.titulo,
@@ -153,7 +155,7 @@ class FilmeController extends Controller
             JOIN filme_genero ON filme_genero.id_filme = filme.id
             JOIN genero ON filme_genero.id_genero = genero.id
             JOIN produtora ON filme.id_produtora = produtora.id
-            WHERE filme.id NOT IN ($ids_destaque_placeholder)
+            WHERE filme.deleted = false AND filme.id NOT IN ($ids_destaque_placeholder)
             GROUP BY
                 filme.id,
                 filme.titulo,
@@ -183,7 +185,7 @@ class FilmeController extends Controller
             JOIN filme_genero ON filme_genero.id_filme = filme.id
             JOIN genero ON filme_genero.id_genero = genero.id
             JOIN produtora ON filme.id_produtora = produtora.id
-            WHERE id_genero IN (2, 3, 6, 7)
+            WHERE filme.deleted = false AND id_genero IN (2, 3, 6, 7)
             GROUP BY
                 filme.id,
                 filme.titulo,
@@ -197,7 +199,6 @@ class FilmeController extends Controller
             ORDER BY RAND()
         ");
 
-
         $cinemas = DB::select("SELECT nome, latitude 'lat', longitude 'lng', logradouro, numero, cep, bairro, cidade, uf FROM `cinema`");
 
         return view('home', [
@@ -210,12 +211,29 @@ class FilmeController extends Controller
 
 
 
-
     public function renderCadastro() {
-        $generos = Genero::all();
-        $produtoras = Produtora::all();
+        $generos = Genero::where('deleted', false)
+        ->orderBy('created_at', 'desc')
+        ->get();;
+        $produtoras = Produtora::where('deleted', false)
+        ->orderBy('created_at', 'desc')
+        ->get();;
 
         return view('admin/cadastro/filme', ['generos' => $generos, 'produtoras' => $produtoras]);
+    }
+
+
+    public function destroy($id)
+    {
+        $filme = Filme::find($id);
+
+        if ($filme) {
+            $filme->deleted = true;
+            $filme->save();
+            return redirect('/admin/visualizar')->with('success', 'Filme excluído com êxito!');
+        }
+
+        return redirect('/admin/visualizar')->with('error', 'Filme não encontrado.');
     }
 
 }
