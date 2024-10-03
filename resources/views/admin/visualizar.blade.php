@@ -17,6 +17,7 @@
         ['url' => '/admin/visualizar/genero', 'label' => 'Gêneros'],
         ['url' => '/admin/visualizar/produtora', 'label' => 'Produtoras'],
         ['url' => '/admin/visualizar/usuario', 'label' => 'Usuários'],
+        ['url' => '/admin/visualizar/sessao', 'label' => 'Sessões'],
     ];
 @endphp
 

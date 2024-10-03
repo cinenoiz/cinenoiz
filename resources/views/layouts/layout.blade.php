@@ -28,8 +28,6 @@
 
             @yield('conteudo')
 
-            @include('partials.footer')
-
 
             <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
             @yield('scripts')

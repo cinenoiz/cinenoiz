@@ -27,6 +27,8 @@
                         @foreach ($cinemas as $cinema)
                             <p class="sinopse">{{ $cinema->nome }}</p>
                         @endforeach
+
+                        <a href="/sessoes/{{ $idFilme }}" class="btn btn-info">Visualizar Sessões Disponíveis</a>
                     </div>
                     <div class="col">
                         <div class="mapa" id="map{{ $modalId }}"></div>

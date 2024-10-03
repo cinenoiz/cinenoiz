@@ -52,7 +52,8 @@
                     'foto1' => asset('/storage/'.$filme->filme1_path),
                     'foto2' => asset('/storage/'.$filme->filme2_path),
                     'sinopse' => $filme->sinopse,
-                    'cinemas' => $cinemas
+                    'cinemas' => $cinemas,
+                    'idFilme' => $filme->id
                 ])->render();
             @endphp
 
@@ -89,7 +90,8 @@
                                 'foto1' => asset('/storage/'.$filme->filme1_path),
                                 'foto2' => asset('/storage/'.$filme->filme2_path),
                                 'sinopse' => $filme->sinopse,
-                                'cinemas' => $cinemas
+                                'cinemas' => $cinemas,
+                                'idFilme' => $filme->id
                             ])->render();
                         @endphp
                     @endforeach
@@ -143,7 +145,8 @@
                                 'foto1' => asset('/storage/'.$filme->filme1_path),
                                 'foto2' => asset('/storage/'.$filme->filme2_path),
                                 'sinopse' => $filme->sinopse,
-                                'cinemas' => $cinemas
+                                'cinemas' => $cinemas,
+                                'idFilme' => $filme->id
                             ])->render();
                         @endphp
                     @endforeach
@@ -163,6 +166,9 @@
 </section>
 
 {!! $modals !!}
+
+
+@include('partials.footer')
 @endsection
 
 

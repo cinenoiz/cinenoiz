@@ -16,6 +16,7 @@
         ['url' => '/admin/cadastro/filme', 'label' => 'Filme'],
         ['url' => '/admin/cadastro/genero', 'label' => 'Gênero'],
         ['url' => '/admin/cadastro/produtora', 'label' => 'Produtora'],
+        ['url' => '/admin/cadastro/sessao', 'label' => 'Sessão'],
     ];
 @endphp
 

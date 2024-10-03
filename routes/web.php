@@ -6,6 +6,8 @@ use App\Http\Controllers\GeneroController;
 use App\Http\Controllers\ProdutoraController;
 use App\Http\Controllers\EnderecoController;
 use App\Http\Controllers\CinemaController;
+use App\Http\Controllers\SessaoController;
+use App\Http\Controllers\IngressoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +25,8 @@ Route::get('/', function () {
 });*/
 
 Route::get('/', [FilmeController::class, 'renderHome']);
+Route::get('/sessoes/{id}', [SessaoController::class, 'renderSessoesFilme']);
+Route::get('/ingresso/{id}', [IngressoController::class, 'renderIngresso']);
 
 
 /*
@@ -53,6 +57,8 @@ Route::get('/admin/cadastro/produtora', function () {
     return view('admin/cadastro/produtora');
 });
 
+Route::get('/admin/cadastro/sessao', [SessaoController::class, 'renderCadastro']);
+
 Route::get('/admin/configuracao/', function () {
     return view('admin/configuracao');
 });
@@ -75,6 +81,10 @@ Route::get('/admin/visualizar/genero', [GeneroController::class, 'index']);
 Route::get('/admin/visualizar/filme', [FilmeController::class, 'index']);
 Route::get('/admin/visualizar/produtora', [ProdutoraController::class, 'index']);
 Route::get('/admin/visualizar/cinema', [CinemaController::class, 'index']);
+Route::get('/admin/visualizar/sessao', [SessaoController::class, 'index']);
+
+
+Route::get('/sessao/{id}/ingressos', [SessaoController::class, 'getIngressosSection']);
 
 
 /*
@@ -86,6 +96,8 @@ Route::get('/admin/visualizar/cinema', [CinemaController::class, 'index']);
 Route::post('/cadastro/produtora', [ProdutoraController::class, 'store']);
 Route::post('/cadastro/genero', [GeneroController::class, 'store']);
 Route::post('/cadastro/cinema', [CinemaController::class, 'store']);
+Route::post('/cadastro/sessao', [SessaoController::class, 'store']);
+Route::post('/cadastro/ingresso', [IngressoController::class, 'store']);
 
 /*
 |--------------------------------------------------------------------------

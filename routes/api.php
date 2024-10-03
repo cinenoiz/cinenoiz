@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FilmeController;
 use App\Http\Controllers\EnderecoController;
 use App\Http\Controllers\CinemaController;
+use App\Http\Controllers\IngressoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,4 +49,6 @@ Route::get('/cinema', [CinemaController::class, 'indexAPI']);
 Route::get('/endereco', [EnderecoController::class, 'getAddress']);
 
 
+
+Route::patch('/validar/ingresso/{id}', [IngressoController::class, 'validarIngresso']);
 
